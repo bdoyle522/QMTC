@@ -1,0 +1,11 @@
+.input {
+  border: 1px solid #c8d0db;
+  border-radius: 4px;
+  flex-grow: 1;
+  margin: 0 10px;
+  padding: 6px;
+}
+
+.input::placeholder {
+  font-style: italic;
+}

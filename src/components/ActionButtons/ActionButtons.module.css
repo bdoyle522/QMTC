@@ -1,0 +1,21 @@
+.buttonsWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  width: 260px;
+}
+
+.searchButton {
+  display: flex;
+  font-size: 14px;
+  justify-content: space-around;
+  padding: 0 30px;
+  height: 40px;
+  width: 140px;
+}
+
+.resetButton {
+  font-size: 14px;
+  height: 40px;
+  width: 90px;
+}

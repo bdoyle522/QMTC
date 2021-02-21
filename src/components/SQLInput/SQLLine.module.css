@@ -1,0 +1,13 @@
+.lineWrapper {
+  align-items: center;
+  border: 1px solid #c8d0db;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+  padding: 20px;
+}
+
+.removeRow:hover {
+  cursor: pointer;
+}

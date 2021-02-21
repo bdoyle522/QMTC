@@ -1,0 +1,16 @@
+.outputBox {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  font-family: 'Courier New', Courier, monospace;
+  height: 180px;
+  padding: 20px;
+  justify-content: center;
+  width: 100%;
+}
+
+.infoText {
+  color: #7e91a2;
+  font-size: 12px;
+  font-style: italic;
+}

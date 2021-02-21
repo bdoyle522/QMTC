@@ -1,0 +1,17 @@
+.sqlWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.addButton {
+  height: 30px;
+  margin-bottom: 30px;
+  margin-top: 5px;
+  width: 50px;
+}
+
+.divider {
+  border: 1px solid #e0e6ed;
+  margin: 20px 0;
+  width: 100%;
+}

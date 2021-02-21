@@ -1,0 +1,8 @@
+.appWrapper {
+  background-color: #fbfbfb;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  height: 100vh;
+  padding: 50px 70px;
+}
