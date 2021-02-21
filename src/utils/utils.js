@@ -16,7 +16,7 @@ import {
   CONTAINS,
   IN,
   STARTS_WITH,
-} from './constants';
+} from '../constants';
 
 export const getPredicateOperators = (predicate) => {
   return getTypeOfPredicate(predicate) === NUMBER
