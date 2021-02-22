@@ -14,6 +14,7 @@ export const UserInput = ({ inputType, value, onChange, placeholder }) => (
     onChange={onChange}
     value={value}
     placeholder={placeholder}
+    type={inputType === NUMBER ? 'number' : undefined}
   />
 );
 
