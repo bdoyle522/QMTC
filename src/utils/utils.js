@@ -107,7 +107,7 @@ export const generateSQLStatement = (items) => {
       case CONTAINS:
         return `${statement} ${
           i !== 0 ? 'AND' : ''
-        } Contains(${predicate}, '${userInput}')`;
+        } ${predicate} LIKE '%${userInput}%'`;
       case IN:
         if (predicateType === TEXT) {
           value = formatInStringList(userInput);
