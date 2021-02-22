@@ -43,7 +43,7 @@ export const SQLLine = ({ onDelete, rowId, row, onUpdate, onSearch }) => {
         className={styles.removeRow}
         onClick={() => onDelete(rowId)}
         onKeyDown={(e) => {
-          if (e.key === ' ' || e.key === 'enter') {
+          if (e.key === ' ' || e.key === 'Enter') {
             e.preventDefault();
             onDelete(rowId);
           }
