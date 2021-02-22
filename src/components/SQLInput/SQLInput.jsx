@@ -13,7 +13,7 @@ export const SQLInput = ({
   onSearch,
 }) => {
   return (
-    <div className={styles.sqlWrapper}>
+    <div className={styles.sqlWrapper} id="sql-input">
       {Object.entries(items).map(([key, row]) => {
         return (
           <SQLLine
@@ -31,6 +31,7 @@ export const SQLInput = ({
         buttonType="primary"
         onClick={onAddItem}
         className={styles.addButton}
+        id="add"
       />
       <hr className={styles.divider} />
     </div>

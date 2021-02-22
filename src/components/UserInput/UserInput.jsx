@@ -12,7 +12,6 @@ export const UserInput = ({ inputType, value, onChange, placeholder }) => (
     step={inputType === NUMBER ? 1 : undefined}
     min={inputType === NUMBER ? 0 : undefined}
     onChange={onChange}
-    // type={inputType}
     value={value}
     placeholder={placeholder}
   />

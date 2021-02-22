@@ -73,6 +73,7 @@ export const generatePlaceholderText = (predicate) => {
 const formatInStringList = (input) => {
   const stripAndSplit = input.replace(/\s+/g, '').split(',');
   return stripAndSplit.reduce((final, val, i) => {
+    if (!val) return final;
     return `${final}${i !== 0 ? ', ' : ''}'${val}'`;
   }, '');
 };
@@ -84,16 +85,17 @@ const formatInStringList = (input) => {
 const formatInIntegerList = (input) => {
   const stripAndSplit = input.replace(/\s+/g, '').split(',');
   return stripAndSplit.reduce((final, val, i) => {
+    if (!val) return final;
     return `${final}${i !== 0 ? ', ' : ''}${val}`;
   }, '');
 };
 
 /**
  *
- * @param {Object} items - map of items that contain user inputs
+ * @param {Array} items - map of items that contain user inputs
  */
 export const generateSQLStatement = (items) => {
-  return Object.values(items).reduce((statement, item, i) => {
+  return items.reduce((statement, item, i) => {
     const { predicate, operator, userInput, userInput2 } = item;
     const predicateType = getTypeOfPredicate(item.predicate);
     let value;

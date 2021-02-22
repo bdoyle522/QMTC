@@ -8,7 +8,14 @@ import styles from './Button.module.css';
 const PRIMARY = 'primary';
 const SECONDARY = 'secondary';
 
-export const Button = ({ label, onClick, buttonType, leftIcon, className }) => (
+export const Button = ({
+  label,
+  onClick,
+  buttonType,
+  leftIcon,
+  className,
+  id,
+}) => (
   <button
     className={cn(className, styles.button, {
       [styles.primary]: buttonType === PRIMARY,
@@ -17,6 +24,7 @@ export const Button = ({ label, onClick, buttonType, leftIcon, className }) => (
     type="button"
     onClick={onClick}
     tabIndex={0}
+    id={`${id}-button`}
   >
     {!!leftIcon && <FontAwesomeIcon icon={leftIcon} />}
     {label}
@@ -29,4 +37,5 @@ Button.propTypes = {
   buttonType: PropTypes.oneOf([PRIMARY, SECONDARY]),
   className: PropTypes.string,
   leftIcon: PropTypes.any,
+  id: PropTypes.string.isRequired,
 };

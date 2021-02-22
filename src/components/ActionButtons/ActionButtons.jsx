@@ -13,12 +13,14 @@ export const ActionButtons = ({ onSearch, onReset }) => (
       leftIcon={faSearch}
       className={styles.searchButton}
       onClick={onSearch}
+      id="search"
     />
     <Button
       className={styles.resetButton}
       label="Reset"
       buttonType="secondary"
       onClick={onReset}
+      id="reset"
     />
   </div>
 );

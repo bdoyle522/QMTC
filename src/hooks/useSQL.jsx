@@ -6,6 +6,7 @@ import {
   predicateOptions,
   stringOperators,
   integersOperators,
+  BETWEEN,
 } from '../constants';
 import { getTypeOfPredicate, generateSQLStatement } from '../utils';
 
@@ -30,7 +31,16 @@ export default function useSQL() {
   }, [items, setItems]);
 
   const onSearch = useCallback(() => {
-    setOutput(generateSQLStatement(items));
+    const rows = Object.values(items);
+    if (
+      rows.some(
+        (item) =>
+          !item.userInput || (item.operator === BETWEEN && !item.userInput2)
+      )
+    ) {
+      return alert('Please fill in all fields to generate your SQL statement');
+    }
+    setOutput(generateSQLStatement(rows));
   }, [items, setOutput]);
 
   const onReset = useCallback(() => {

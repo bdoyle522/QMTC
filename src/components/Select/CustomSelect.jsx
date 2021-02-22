@@ -6,27 +6,30 @@ import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './Select.module.css';
 
-export const CustomSelect = ({ options, onChange, value }) => {
+export const CustomSelect = ({ options, onChange, value, id }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownId = `${id}-dropdown`;
   useEffect(() => {
     function clickListener(e) {
-      const dropdown = document.getElementById('custom-dropdown');
-      if (e.target.contains(dropdown) && isOpen) {
+      const dropdown = document.getElementById(dropdownId);
+      if (!dropdown.contains(e.target) && isOpen) {
         setIsOpen(false);
       }
     }
     window.addEventListener('click', clickListener, false);
     return () => window.removeEventListener('click', clickListener, false);
-  }, [isOpen]);
+  }, [isOpen, dropdownId]);
 
   const onKeyDown = (e) => {
     if (e.key === ' ' || e.key === 'Enter') {
       e.preventDefault();
       if (!isOpen) {
         setIsOpen(true);
-        const firstOption = document.getElementById(options[0].value);
+        const firstOption = document.getElementById(
+          `${id}-${options[0].value}`
+        );
         if (firstOption) {
-          firstOption.focus();
+          window.requestAnimationFrame(() => firstOption.focus());
         }
       } else {
         setIsOpen(false);
@@ -37,7 +40,7 @@ export const CustomSelect = ({ options, onChange, value }) => {
   const onOptionKeyDown = (e, value) => {
     if (e.key === ' ' || e.key === 'Enter') {
       e.preventDefault();
-      onChange({ target: { value } });
+      onChange(value);
       setIsOpen(false);
     }
   };
@@ -45,7 +48,7 @@ export const CustomSelect = ({ options, onChange, value }) => {
   return (
     <span
       className={styles.value}
-      id="custom-dropdown"
+      id={dropdownId}
       onClick={() => setIsOpen(!isOpen)}
       onKeyDown={onKeyDown}
       tabIndex={0}
@@ -59,21 +62,21 @@ export const CustomSelect = ({ options, onChange, value }) => {
       <div className={cn({ [styles.open]: isOpen, [styles.closed]: !isOpen })}>
         {options.map((option) => {
           return (
-            <span
+            <option
               onClick={() => {
                 setIsOpen(false);
-                onChange({ target: { value: option.value } });
+                onChange(option.value);
               }}
               className={cn(styles.customOption, {
                 [styles.selectedOption]: value === option.value,
               })}
-              id={option.value}
+              id={`${id}-${option.value}`}
               tabIndex={isOpen ? 0 : undefined}
               onKeyDown={(e) => onOptionKeyDown(e, option.value)}
               key={option.value}
             >
               {option.label}
-            </span>
+            </option>
           );
         })}
       </div>
@@ -89,4 +92,5 @@ CustomSelect.propTypes = {
     })
   ),
   onChange: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };

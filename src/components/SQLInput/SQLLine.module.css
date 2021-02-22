@@ -1,13 +1,27 @@
 .lineWrapper {
   align-items: center;
+  animation: enter 0.3s ease-in;
+  background-color: white;
   border: 1px solid #c8d0db;
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
   margin: 5px 0;
   padding: 20px;
+  transition: opacity 2s;
 }
 
 .removeRow:hover {
   cursor: pointer;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

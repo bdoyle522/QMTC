@@ -34,7 +34,11 @@ export const SQLLine = ({ onDelete, rowId, row, onUpdate, onSearch }) => {
   const placeholderText = generatePlaceholderText(predicate);
 
   return (
-    <form className={styles.lineWrapper} onSubmit={onSubmit}>
+    <form
+      className={styles.lineWrapper}
+      onSubmit={onSubmit}
+      id={`${rowId}-line`}
+    >
       <FontAwesomeIcon
         className={styles.removeRow}
         onClick={() => onDelete(rowId)}
@@ -51,13 +55,15 @@ export const SQLLine = ({ onDelete, rowId, row, onUpdate, onSearch }) => {
       <Select
         options={predicateOptions}
         value={predicate}
-        onChange={(e) => onChange('predicate', e.target.value)}
+        onChange={(value) => onChange('predicate', value)}
+        id={`${rowId}-predicate`}
       />
       {predicateType === NUMBER && <Helper text="is" />}
       <Select
         options={getPredicateOperators(predicate)}
         value={operator}
-        onChange={(e) => onChange('operator', e.target.value)}
+        onChange={(value) => onChange('operator', value)}
+        id={`${rowId}-operator`}
       />
       <UserInput
         onChange={(e) => onChange('userInput', e.target.value)}
